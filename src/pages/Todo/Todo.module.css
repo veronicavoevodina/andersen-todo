@@ -1,0 +1,84 @@
+.input {
+  display: flex;
+  justify-content: center;
+}
+.section,
+.done {
+  background: var(--white);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+  padding: 2rem;
+}
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.list {
+  margin-top: 2rem;
+  width: 100%;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+  padding: 0.25rem 1rem;
+  border-radius: var(--radius);
+  text-transform: capitalize;
+  font-size: 2rem;
+  overflow: scroll;
+}
+.item::-webkit-scrollbar {
+  width: 0;
+}
+.item:hover {
+  color: var(--clr-grey-5);
+  background: var(--clr-grey-10);
+}
+.item:hover .title {
+  color: var(--clr-grey-5);
+}
+.title {
+  margin-bottom: 0;
+  color: var(--clr-grey-1);
+  letter-spacing: 2px;
+  transition: var(--transition);
+  font-size: 1.4rem;
+  font-family: 'Caveat', cursive;
+  overflow: scroll;
+}
+.title::-webkit-scrollbar {
+  width: 0;
+}
+.icon {
+  margin: 0 1rem;
+}
+@media screen and (max-width: 600px) {
+  .input {
+    flex-direction: column;
+  }
+  label {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 400px) {
+  .section,
+  .done {
+    padding: 1rem;
+  }
+  .icon {
+    margin: 0;
+    line-height: 0;
+    font-size: 1rem;
+  }
+  .svg {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+}

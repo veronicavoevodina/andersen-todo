@@ -1,0 +1,47 @@
+nav {
+  background: var(--main-2);
+  box-shadow: var(--shadow-4);
+}
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.logo {
+  width: 30px;
+  height: 30px;
+}
+.item {
+  margin: 0 1rem;
+}
+.counter {
+  margin: 0 1rem;
+  border-radius: 2rem;
+  background: #d5d4d4;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+}
+@media screen and (min-width: 800px) {
+  .center {
+    max-width: 1470px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .header {
+    padding: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .item {
+    font-size: 0.9rem;
+  }
+  .counter {
+    padding: 0.2rem;
+    font-size: 0.5rem;
+  }
+}

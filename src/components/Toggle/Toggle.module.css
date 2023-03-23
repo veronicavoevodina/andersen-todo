@@ -1,0 +1,39 @@
+.container {
+  width: var(--fluid-width);
+  max-width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  background: var(--button-toggle);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-2);
+  margin: 1rem auto;
+  transition: var(--transition);
+}
+.toggle,
+.active {
+  align-self: center;
+  display: contents;
+}
+.active > .right,
+.active > .left {
+  background: var(--primary-300);
+  color: var(--cream);
+}
+.right,
+.left {
+  padding: 1rem 1rem;
+  width: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: var(--transition);
+  box-shadow: var(--shadow-2);
+  text-transform: uppercase;
+}
+.right {
+  border-radius: 0 1rem 1rem 0;
+}
+.left {
+  border-radius: 1rem 0 0 1rem;
+}
