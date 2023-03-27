@@ -1,5 +1,4 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import {
   Todo,
@@ -12,7 +11,7 @@ import {
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -28,7 +27,7 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="*" element={<Error />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
