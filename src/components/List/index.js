@@ -4,7 +4,7 @@ import { CiEdit } from 'react-icons/ci';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
 
-const List = ({ removeItem, editItem, moveToDone }) => {
+const List = ({ removeItem, editItem, moveToDone, isEditing }) => {
   const { todo } = useSelector((state) => state.todo);
   return (
     <div className={style.list}>
@@ -34,6 +34,7 @@ const List = ({ removeItem, editItem, moveToDone }) => {
                   type="button"
                   className={style.delete}
                   onClick={() => removeItem(id)}
+                  disabled={isEditing}
                 >
                   <AiOutlineDelete />
                 </button>

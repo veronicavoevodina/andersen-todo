@@ -48,6 +48,7 @@ const Register = () => {
           labelText="Enter your name"
           placeholder="Susan"
           error={error}
+          maxLength={20}
         />
         <Button
           type="submit"

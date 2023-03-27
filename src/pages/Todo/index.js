@@ -102,6 +102,7 @@ const Todo = () => {
             removeItem={removeItem}
             editItem={editItem}
             moveToDone={DoneIt}
+            isEditing={isEditing}
           />
         </div>
       )}
