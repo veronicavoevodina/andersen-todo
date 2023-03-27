@@ -3,11 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Input from '../../components/Input';
 import style from './Todo.module.css';
 import List from '../../components/List';
-import {
-  updateTodo,
-  addToList,
-  removeFromList,
-} from '../../features/todo/todoSlice';
+import { updateTodo, addToList, removeFromList } from '../../store/todoSlice';
 import { useState } from 'react';
 import Button from '../../components/Button';
 
@@ -29,6 +25,7 @@ const Todo = () => {
         title: name,
         id: editID,
         isActive: todo.find((el) => el.id === editID).isActive,
+        classname: 'title',
       };
       dispatch(updateTodo(newItem));
       setName('');

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useDispatch } from 'react-redux';
-import { login } from '../../features/todo/todoSlice';
+import { login } from '../../store/todoSlice';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 
