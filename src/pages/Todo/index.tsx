@@ -1,5 +1,6 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { ChangeEvent } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from 'store/store';
 import Input from '../../components/Input';
 import style from './Todo.module.css';
 import List from '../../components/List';
@@ -9,14 +10,14 @@ import Button from '../../components/Button';
 
 const Todo = () => {
   const dispatch = useDispatch();
-  const { todo } = useSelector((state) => state.todo);
+  const { todo } = useAppSelector((state) => state.rootReducer.todoReducer);
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [editID, setEditID] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) {
       setError('please enter value');
@@ -43,7 +44,7 @@ const Todo = () => {
       setName('');
     }
   };
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (!value) {
       setError('please enter value');
@@ -54,16 +55,16 @@ const Todo = () => {
     }
     setName(value);
   };
-  const removeItem = (id) => {
+  const removeItem = (id: string) => {
     dispatch(removeFromList(id));
   };
-  const editItem = (id) => {
+  const editItem = (id: string) => {
     const item = todo.find((item) => item.id === id);
     setIsEditing(true);
     setEditID(id);
     setName(item.title);
   };
-  const DoneIt = (id) => {
+  const DoneIt = (id: string) => {
     dispatch(
       updateTodo({ ...todo.find((item) => item.id === id), classname: 'done' }),
     );
@@ -75,9 +76,8 @@ const Todo = () => {
   };
   return (
     <section className={style.section}>
-      <div className={style.input}>
+      <form className={style.input} onSubmit={handleSubmit}>
         <Input
-          type="text"
           onChange={handleChange}
           value={name}
           name="task"
@@ -88,17 +88,17 @@ const Todo = () => {
         />
         <Button
           type="submit"
-          onClick={handleSubmit}
           disabled={disabled}
           text={isEditing ? 'edit' : 'submit'}
         />
-      </div>
+      </form>
       {todo.length > 0 && (
         <div className={style.list}>
           <List
             removeItem={removeItem}
             editItem={editItem}
             moveToDone={DoneIt}
+            isEditing={isEditing}
           />
         </div>
       )}

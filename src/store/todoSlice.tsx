@@ -1,20 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ITodoState } from 'types';
 
-const initialState = {
-  user: null,
+export const initialState: ITodoState = {
   todo: [],
 };
 
 export const todoSlice = createSlice({
   name: 'todo',
-  initialState,
+  initialState: initialState,
   reducers: {
-    login: (state, action) => {
-      state.user = action.payload;
-    },
-    logout: (state) => {
-      state.user = null;
-    },
     updateTodo: (state, action) => {
       state.todo = state.todo.map((el) => {
         if (el.id === action.payload.id) {
@@ -32,7 +26,6 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { login, logout, updateTodo, addToList, removeFromList } =
-  todoSlice.actions;
+export const { updateTodo, addToList, removeFromList } = todoSlice.actions;
 
 export default todoSlice.reducer;

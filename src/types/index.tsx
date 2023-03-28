@@ -1,6 +1,9 @@
-export interface IState {
+export interface IUserState {
   user: null | string;
-  todo: [] | ITask;
+}
+
+export interface ITodoState {
+  todo: [] | ITask[];
 }
 
 export interface ITask {
@@ -9,3 +12,5 @@ export interface ITask {
   isActive: boolean;
   classname: string;
 }
+
+export type DeclareFunc = (id: string) => void;

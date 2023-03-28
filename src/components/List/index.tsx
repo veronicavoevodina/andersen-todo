@@ -1,17 +1,28 @@
-import React from 'react';
 import style from './List.module.css';
 import { CiEdit } from 'react-icons/ci';
 import { AiOutlineDelete } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/store';
+import { ITask } from 'types';
+import { DeclareFunc } from 'types';
 
-const List = ({ removeItem, editItem, moveToDone }) => {
-  const { todo } = useSelector((state) => state.todo);
+const List = ({
+  removeItem,
+  editItem,
+  moveToDone,
+  isEditing,
+}: {
+  removeItem: DeclareFunc;
+  editItem: DeclareFunc;
+  moveToDone: DeclareFunc;
+  isEditing: boolean;
+}) => {
+  const { todo } = useAppSelector((state) => state.rootReducer.todoReducer);
   return (
     <div className={style.list}>
       {todo
         .filter((el) => el.isActive)
         .map((item) => {
-          const { id, title, classname } = item;
+          const { id, title, classname }: ITask = item;
           return (
             <article className={style.item} key={id}>
               <p
@@ -34,6 +45,7 @@ const List = ({ removeItem, editItem, moveToDone }) => {
                   type="button"
                   className={style.delete}
                   onClick={() => removeItem(id)}
+                  disabled={isEditing}
                 >
                   <AiOutlineDelete />
                 </button>

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useDispatch } from 'react-redux';
-import { login } from '../../store/todoSlice';
+import { login } from '../../store/userSlice';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 
@@ -14,7 +14,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (!value) {
       setError('please enter value');
@@ -25,7 +25,7 @@ const Register = () => {
     }
     setUser(value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!user) {
       setError('please enter value');
@@ -38,9 +38,8 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <form className="container" onSubmit={handleSubmit}>
         <Input
-          type="text"
           onChange={handleChange}
           value={user}
           name="user"
@@ -48,14 +47,10 @@ const Register = () => {
           labelText="Enter your name"
           placeholder="Susan"
           error={error}
+          maxLength={20}
         />
-        <Button
-          type="submit"
-          onClick={handleSubmit}
-          disabled={disabled}
-          text="Submit"
-        />
-      </div>
+        <Button type="submit" disabled={disabled} text="Submit" />
+      </form>
     </>
   );
 };
