@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IState } from 'types';
 
-const initialState = {
+const initialState: IState = {
   user: null,
   todo: [],
 };
 
 export const todoSlice = createSlice({
   name: 'todo',
-  initialState,
+  initialState: initialState,
   reducers: {
     login: (state, action) => {
       state.user = action.payload;

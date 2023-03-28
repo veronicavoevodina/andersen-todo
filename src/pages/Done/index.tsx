@@ -1,10 +1,9 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../store/store';
 import style from '../Todo/Todo.module.css';
 import { MdDownloadDone } from 'react-icons/md';
 
 const Done = () => {
-  const { todo } = useSelector((state) => state.todo);
+  const { todo } = useAppSelector((state) => state.todo);
   return (
     <section className={style.done}>
       <div className={style.list}>

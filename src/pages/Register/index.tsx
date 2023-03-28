@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useDispatch } from 'react-redux';
@@ -14,7 +14,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (!value) {
       setError('please enter value');
@@ -25,7 +25,7 @@ const Register = () => {
     }
     setUser(value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (!user) {
       setError('please enter value');
@@ -40,7 +40,6 @@ const Register = () => {
       <Navbar />
       <div className="container">
         <Input
-          type="text"
           onChange={handleChange}
           value={user}
           name="user"
