@@ -10,14 +10,14 @@ import Button from '../../components/Button';
 
 const Todo = () => {
   const dispatch = useDispatch();
-  const { todo } = useAppSelector((state) => state.todo);
+  const { todo } = useAppSelector((state) => state.rootReducer.todoReducer);
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [editID, setEditID] = useState(null);
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name) {
       setError('please enter value');
@@ -76,7 +76,7 @@ const Todo = () => {
   };
   return (
     <section className={style.section}>
-      <div className={style.input}>
+      <form className={style.input} onSubmit={handleSubmit}>
         <Input
           onChange={handleChange}
           value={name}
@@ -88,11 +88,10 @@ const Todo = () => {
         />
         <Button
           type="submit"
-          onClick={handleSubmit}
           disabled={disabled}
           text={isEditing ? 'edit' : 'submit'}
         />
-      </div>
+      </form>
       {todo.length > 0 && (
         <div className={style.list}>
           <List

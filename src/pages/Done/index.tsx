@@ -3,7 +3,7 @@ import style from '../Todo/Todo.module.css';
 import { MdDownloadDone } from 'react-icons/md';
 
 const Done = () => {
-  const { todo } = useAppSelector((state) => state.todo);
+  const { todo } = useAppSelector((state) => state.rootReducer.todoReducer);
   return (
     <section className={style.done}>
       <div className={style.list}>

@@ -4,7 +4,9 @@ import { useAppSelector } from '../../store/store';
 import { ITask } from 'types';
 
 export default function Navbar() {
-  const { user, todo } = useAppSelector((store) => store.todo);
+  const { todo } = useAppSelector((store) => store.rootReducer.todoReducer);
+  const { user } = useAppSelector((store) => store.rootReducer.userReducer);
+
   const count = () => {
     const num = todo.filter((el: ITask) => el.isActive).length;
     let answer = `${num} active tasks`;

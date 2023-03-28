@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useDispatch } from 'react-redux';
-import { login } from '../../store/todoSlice';
+import { login } from '../../store/userSlice';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 
@@ -25,7 +25,7 @@ const Register = () => {
     }
     setUser(value);
   };
-  const handleSubmit = (e: React.MouseEvent<HTMLInputElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!user) {
       setError('please enter value');
@@ -38,7 +38,7 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <form className="container" onSubmit={handleSubmit}>
         <Input
           onChange={handleChange}
           value={user}
@@ -49,13 +49,8 @@ const Register = () => {
           error={error}
           maxLength={20}
         />
-        <Button
-          type="submit"
-          onClick={handleSubmit}
-          disabled={disabled}
-          text="Submit"
-        />
-      </div>
+        <Button type="submit" disabled={disabled} text="Submit" />
+      </form>
     </>
   );
 };

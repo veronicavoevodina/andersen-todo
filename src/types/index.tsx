@@ -1,5 +1,8 @@
-export interface IState {
+export interface IUserState {
   user: null | string;
+}
+
+export interface ITodoState {
   todo: [] | ITask[];
 }
 

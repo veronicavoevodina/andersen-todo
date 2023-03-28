@@ -10,7 +10,7 @@ export default function Button({
   text: string;
   type: 'button' | 'submit' | 'reset';
   disabled: boolean;
-  onClick: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }) {
   return (
     <button

@@ -16,7 +16,7 @@ const List = ({
   moveToDone: DeclareFunc;
   isEditing: boolean;
 }) => {
-  const { todo } = useAppSelector((state) => state.todo);
+  const { todo } = useAppSelector((state) => state.rootReducer.todoReducer);
   return (
     <div className={style.list}>
       {todo
